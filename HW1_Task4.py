@@ -14,7 +14,7 @@ elif (UserNumber == 4):
 elif (UserNumber == 5):
     print ("It's Friday. You still have to work, but weekend is near!:)")
 elif (UserNumber == 6):
-    print ("It's Saturday. You can sleep for a long time!It's day off!!!:)")
+    print ("It's Saturday. You can sleep for a long time! It's day off!!!:)")
 elif (UserNumber == 7):
     print ("It's Sunday. Day off! Have fun:)")
 else:

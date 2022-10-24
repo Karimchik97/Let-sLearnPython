@@ -1,31 +1,20 @@
 # Даны два файла, в каждом из которых находится запись многочлена.
 # Задача - сформировать файл, содержащий сумму многочленов.
 
-from HW4 import createEquation
 
-def readEquation():
-firstEquation = createEquation()
-eqation = {}
+with open('HW4//file1.txt', 'r') as file:
+    file_data_list1 = file.read()
+    print(f'Данные с файла 1 многочлен {file_data_list1}')
+file.close()
 
+with open('HW4//file2.txt', 'r') as file:
+    file_data_list2 = file.read()
+    print(f'Данные с файла 2 многочлен {file_data_list2}')
+file.close()
 
-firstEquation = firstEquation.replace(" + ", " +").replace(" - ", " -").split()[:-2]
+f_1 = file_data_list1.translate({ord(i): None for i in '+' '=' '0' '*'})
+print(f_1)
 
-for i in range(len(firstEquation)):
-firstEquation[i] = firstEquation[i].replace("+", "").split("x^")
-eqation[int(firstEquation[i][1])] = int(firstEquation[i][0])
+f_2 = file_data_list2.translate({ord(i): None for i in '+' '=' '0' '*'})
+print(f_2)
 
-return eqation
-
-finalWord = {}
-
-word1 = readEquation()
-word2 = readEquation()
-
-
-for i in range(max(len(word1), len(word2)), -1, -1):
-first = word1.get(i)
-second = word2.get(i)
-if first != None or second != None:
-finalWord[i] = (first if first != None else 0) + (second if second != None else 0)
-
-print(finalWord)

@@ -1,6 +1,6 @@
 # Задайте натуральное число N. Напишите программу, которая составит список простых множителей числа N.
 
-n = int (input('Bведите целое число > 0: '))
+n = int (input("Enter an integer: > 0: "))
 if n > 0:
     f = []
     a = 2
@@ -12,6 +12,6 @@ if n > 0:
             a += 1
     f.append(n)
     f = list(set(f))
-    print(f"Список простых множителей числа {n}: {f}")
+    print(f"There is the list of prime factors of {n}: {f}")
 else:
-    print("Ошибка ввода!")
+    print("Error! Let's try again!")

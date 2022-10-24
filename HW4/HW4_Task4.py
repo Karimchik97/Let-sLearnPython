@@ -3,24 +3,50 @@
 # k - максимальная степень многочлена, следующий степень следующего на 1 меньше и так до ноля
 # Коэффициенты расставляет random, поэтому при коэффициенте 0 просто пропускаем данную итерацию степени
 
-from random import randint as rI
+import random
+
+# создать список коэфициентов передавая степень count_elements
 
 
-def createEquation():
-    global degree = int(input("Введите максимальную степень многочлена: "))
-    equation = ''
+def create_list(count_elements):
+    coefficientes_lst = [random.randint(0, 100 + 1)
+                         for i in range(count_elements + 1)]
+    return coefficientes_lst
 
-for d in range(degree, -1, -1):
-    coef = rI(-20,20)
-if d == degree:
-    if coef > 0:
-        equation += str(coef) + 'x^' + str(d)
-    if coef < 0:
-        equation += '-' + str(abs(coef)) + 'x^' + str(d)
-    else:
-    if coef > 0:
-        equation += ' + ' + str(coef) + 'x^' + str(d)
-    if coef < 0:
-        equation += ' - ' + str(abs(coef)) + 'x^' + str(d)
 
-return equation + ' = 0'
+# заполнение многочлена передавая lst_data
+def create_polynomial(lst_data):
+    if len(lst_data) < 1:
+        return 'x = 0'
+    k = len(lst_data) - 1
+    result = ""
+    for i in range(len(lst_data)):
+        if i == len(lst_data) - 1:
+            result += f'{lst_data[i]} = 0'
+            return result
+        else:
+            result += f'{lst_data[i]}*x'
+            if k != 1:
+                result += f'^{k}'
+            k -= 1
+        result += f' + '
+    return result
+
+
+# создать файл передавая polynomial_str
+def save_to_file(polynomial_str):
+    with open('HW4/file.txt', 'w') as data:
+        data.write(polynomial_str)
+
+
+# степень k
+degree_k = int(input("Введите натуральную степень k = "))
+
+# список рандомных коэфициентов
+lst = create_list(degree_k)
+print(lst)
+
+# создаем файл и записываем многочлен использую список рандомных коэфициентов от степени k
+poly_str = create_polynomial(lst)
+print(poly_str)
+save_to_file(poly_str)

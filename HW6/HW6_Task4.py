@@ -7,12 +7,13 @@
 #     print(k)
 
 # ENUMERATE
-import enum
+
 n = int(input("Enter your number: "))
 list = [i * (i+1) for i in range(1, n)]
-print(list)
-list2 = enumerate(list, 1)
-print (list2)
+list2 = enumerate(list,1)
+print(list(list2))
+# print(list(enumerate(list, 1)))
+
 
 
 
